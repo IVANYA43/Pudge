@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class Pudge {
+private:
+	int health;
+	int armour;
+	int strength;
+
+public:
+	Pudge(int h = 700, int a = 10, int s = 30) {
+		health = h;
+		armour = a;
+		strength = s;
+	}
+	void FreshMeat() {
+		health += strength * 2;
+		armour += 1;
+		cout << "Pudge eat fresh meat" << endl;
+		cout << "Health: " << health << ", Armour: " << armour << endl;
+}
+	void Rot() {
+		if (health > 300) {
+			health -= 200;
+			int damage = strength * 5;
+			cout << "Pudge using Rot!" << endl;
+			cout << "Inflicted " << damage << " damage, health remaining: " << health << endl;
+		}
+		else {
+			cout << "Not enough health for ultimate ability!" << endl;
+		}
+    }
+	void PrintStats() const {
+		cout << "Health: " << health << "Armour: " << armour << endl;
+}
+};
+
+int main() {
+	Pudge pudge;
+
+	pudge.PrintStats();
+	pudge.FreshMeat();
+	pudge.Rot();
+
+	return 0;
+}
